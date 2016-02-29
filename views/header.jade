@@ -1,0 +1,29 @@
+//
+   Created by Lorenzo on 2016/2/28.
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/global.css')
+        block scripts
+            script(src='/javascripts/jquery-1.9.1.min.js')
+    body
+        header
+            h1 #{title}
+        nav
+            span
+                a(title="主页" href="/") home
+                if user
+                    a(title="登出" href="/logout") logout
+                else
+                    a(title="登录" href="/login") login
+                    a(title="注册" href="/reg") register
+        article
+            if success
+                h3= success
+            else
+                h3= error
+        block content
+
+    block foot
+        div.footer &copy; 2016

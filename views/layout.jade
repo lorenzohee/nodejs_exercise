@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/jquery.fullPage.css')
+    link(rel='stylesheet', href='/stylesheets/animate.css')
+    link(rel='stylesheet', href='/stylesheets/newYear.css')
+    block scripts
+      script(src='/javascripts/jquery-1.9.1.min.js')
+      script(src='/javascripts/easing1.3.js')
+      script(src='/javascripts/jquery.fullPage.js')
+      script(src='/javascripts/fullpage.js')
+  body
+    block content

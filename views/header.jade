@@ -4,26 +4,24 @@ doctype html
 html
     head
         title= title
-        link(rel='stylesheet', href='/stylesheets/global.css')
+        block links
+            link(href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet")
+            link(rel='stylesheet', href='/stylesheets/global.css')
+        block pageLink
         block scripts
-            script(src='/javascripts/jquery-1.9.1.min.js')
+            script(src="//cdn.bootcss.com/jquery/1.10.0/jquery.min.js")
+            script(src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js")
+        block pageScripts
     body
-        header
-            h1 #{title}
-        nav
-            span
-                a(title="主页" href="/") home
-                if user
-                    a(title="登出" href="/logout") logout
-                else
-                    a(title="登录" href="/login") login
-                    a(title="注册" href="/reg") register
-        article
-            if success
-                h3= success
-            else
-                h3= error
+        //nav
+        //    span
+        //        a(title="主页" href="/") home
+        //        if user
+        //            a(title="登出" href="/logout") logout
+        //        else
+        //            a(title="登录" href="/login") login
+        //            a(title="注册" href="/reg") register
         block content
 
-    block foot
-        div.footer &copy; 2016
+        block foot
+            div.footer &copy; 2016

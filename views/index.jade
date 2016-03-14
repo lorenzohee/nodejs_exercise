@@ -1,3 +1,39 @@
 extends header
+block pageScripts
+  script(src="/javascripts/navbarscrollspy.js")
 block content
+  .brand
+    Business HOPE 开放创新平台
+  .address-bar
+    | 3481 篇文章 | 2456个方案 | 解决245个需求
+  nav.navbar.navbar-default
+    .container
+      .collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li
+            a(href='/nav1') Home
+          li
+            a(href='/login') 技术需求
+          li
+            a(href='/reg') 技术方案
+          li
+            a(href='/reg') 共创空间
+          li
+            a(href='/reg') 技术线索
+          if user
+            li
+              a(href='/logout') Logout
+
   div tests #{title}
+  if user
+    h3= user.name
+  nav
+      span
+          a(title="主页" href="/") home
+          if user
+              a(title="登出" href="/logout") logout
+          else
+              a(title="登录" href="/login") login
+              a(title="注册" href="/reg") register
+  .test
+    | haha

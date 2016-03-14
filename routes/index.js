@@ -6,6 +6,9 @@ var crypto = require('crypto'),
 router.get('/full', function(req, res, next) {
   res.render('fullPage', { title: 'Express' });
 });
+router.get('/nav1', function(req, res, next) {
+  res.render('nav1', { title: 'Express' });
+});
 router.get('/newyear', function(req, res, next) {
   res.render('newYear', { title: 'Express' });
 });

@@ -2,12 +2,29 @@
    Created by Lorenzo on 2016/2/28.
 extends header
 block content
-    form(method='post')
-        div
-            label 用户名：
-            input(type="text" name="name")
-        div
-            label 密码：
-            input(type="password" name="password")
-        div
-            input(type="submit" value="登录")
+    form(method='post').form-horizontal.loginForm
+        .loginHeader
+            | 欢迎回来
+            span.pull-right.noCount 还没账号？
+                a(href='/reg').logupLink 立即注册
+        article
+            if success
+                .success.tipInfo= success
+            else
+                .error.tipInfo= error
+        .form-group
+            label.col-xs-3.control-label(for='username') 用户名：
+            .col-xs-9
+                input(type="text" name="name" id="username" required).form-control
+        .form-group
+            label.col-xs-3.control-label(for='password') 密码：
+            .col-xs-9
+                input(type="password" name="password" id="password" required).form-control
+        .form-group
+            .col-sm-offset-3.col-sm-9
+                label.checkbox
+                    input(type="checkbox")
+                    | 记住我
+        .form-group
+            .col-xs-9.col-sm-offset-3
+                button(type="submit" class="loginButton") 立刻登录

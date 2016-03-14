@@ -1,13 +1,118 @@
-.footer {font-size: 1.2em; text-align: center;}
-
 *{padding:0;margin:0;}
-body{width:600px;margin:2em auto;padding:0 2em;font-size:14px;font-family:"Microsoft YaHei";}
+body{font-family:"Microsoft YaHei";}
 p{line-height:24px;margin:1em 0;}
 header{padding:.5em 0;border-bottom:1px solid #cccccc;}
-nav{float:left;font-family:"Microsoft YaHei";font-size:1.1em;text-transform:uppercase;margin-left:-12em;width:9em;text-align:right;}
+nav{font-family:"Microsoft YaHei";font-size:1.1em;text-transform:uppercase;width:9em;text-align:right;}
 nav a{display:block;text-decoration:none;padding:.7em 1em;color:#000000;}
 nav a:hover{background-color:#ff0000;color:#f9f9f9;-webkit-transition:color .2s linear;}
 article{font-size:16px;padding-top:.5em;}
 article a{color:#dd0000;text-decoration:none;}
 article a:hover{color:#333333;text-decoration:underline;}
 .info{font-size:14px;}
+
+.test {
+    height:1000px;
+}
+body {
+    background: url(../images/bg.jpg) no-repeat center center fixed;
+}
+.footer {
+    width: 100%;
+    font-size: 1.2em;
+    text-align: center;
+    background: #E0E0E0;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+/** login and register style **/
+.loginForm {
+    background: #fff;
+    padding: 40px 50px 30px 20px;
+    max-width: 500px;
+    margin: 50px auto;
+}
+.loginHeader {
+    font-size:30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.noCount {
+    font-size: 12px;
+    line-height: 50px;
+}
+.logupLink {
+    color: #48C000;
+}
+
+.loginButton {
+    width: 100%;
+    padding: 8px 12px;
+    background: #5FB75F;
+    border: none;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.loginButton:hover {
+    background: #397339;
+}
+
+/** tips info **/
+.tipInfo {margin: -10px 0 10px;}
+
+.success {color: #00b4ec}
+.error {color:red}
+
+/** nav **/
+.brand {
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: inherit;
+    padding: 30px 0 10px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    font-size: 5em;
+    font-weight: 700;
+    color: #fff;
+}
+
+.address-bar {
+    font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: inherit;
+    padding: 0 0 40px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    font-size: 1.25em;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: #fff;
+}
+
+/** refactor bootstrap style **/
+.navbar-default {
+    background: rgba(255,255,255,0.9);
+    width:100%;
+}
+.navbar-nav {display: table;margin:0 auto;float:none}
+.navbar {border:none;border-radius: 0}
+
+.navbar-default li > a{
+    padding: 35px;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color: #fff
+}
+.navbar-default li:hover{
+    background: #3db1fa;
+}
+
+.navbar-shrink {
+    top:0;
+    position: fixed;
+    background: #fff;
+}
+.navbar-default.navbar-shrink li > a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

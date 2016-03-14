@@ -3,18 +3,38 @@
 extends header
 
 block content
-    form(method='post')
-        div
-            label 用户名:
-            input(type='text', name='name')
-        div
-            label 密码：
-            input(type='password' name='password')
-        div
-            label 确认密码：
-            input(type='password' name='password-repeat')
-        div
-            label 邮箱：
-            input(type='email' name='email')
-        div
-            input(type='submit' value='确认')
+    form(method='post').form-horizontal.loginForm
+        .loginHeader
+            | 加入我们
+            span.pull-right.noCount 已有账号？
+                a(href='/login').logupLink 立即登录
+        article
+            if success
+                .success.tipInfo= success
+            else
+                .error.tipInfo= error
+
+        .form-group
+            label.col-xs-3.control-label(for='username') 用户名：
+            .col-xs-9
+                input(type="text" name="name" id="username" required).form-control
+        .form-group
+            label.col-xs-3.control-label(for='password') 密码：
+            .col-xs-9
+                input(type="password" name="password" id="password" required).form-control
+        .form-group
+            label.col-xs-3.control-label(for='password-repeat') 确认密码：
+            .col-xs-9
+                input(type="password" name="password" id="password-repeat" required).form-control
+        .form-group
+            label.col-xs-3.control-label(for='email') 邮箱：
+            .col-xs-9
+                input(type='email' name='email' id='email').form-control
+        .form-group
+            .col-sm-offset-3.col-sm-9
+                label.checkbox
+                    input(type="checkbox" required)
+                    | 已阅读并同意<a href=''>《注册协议》</a>
+        .form-group
+            .col-xs-9.col-sm-offset-3
+                button(type="submit" class="loginButton") 立刻注册

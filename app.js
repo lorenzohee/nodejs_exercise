@@ -11,7 +11,6 @@ var settings = require('./settings');
 var flash = require('connect-flash');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-
 var app = express();
 
 // view engine setup
@@ -36,6 +35,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req, res, next){
+  res.locals.user = req.user; // make user available in all views
+  res.locals.errorMessages = req.flash('error'); // make error alert messages available in all views
+  res.locals.successMessages = req.flash('success'); // make success messages available in all views
+  next();
+})
 
 app.use('/', routes);
 app.use('/users', users);
@@ -70,6 +76,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

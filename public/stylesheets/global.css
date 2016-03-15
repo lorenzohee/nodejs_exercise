@@ -111,8 +111,25 @@ body {
     top:0;
     position: fixed;
     background: #fff;
+    z-index: 999;
 }
 .navbar-default.navbar-shrink li > a {
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+
+
+/** 遮罩 **/
+.zhezhao:hover:after {
+    content:'点击选中√';
+    opacity:0.8;
+    background: red;
+    position: absolute;
+    width: 500px;
+    height: 335px;
+    margin: -304px 0 0 -20px;
+    text-align: center;
+    line-height: 335px;
+    font-size: 5em;
 }

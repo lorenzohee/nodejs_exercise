@@ -1,0 +1,15 @@
+/** carols **/
+.navbar-default{rgba(255,255,255,0.6)}
+.navbar-default .navbar-nav>li>a {color: #000}
+header.carousel{height: 400px;padding: 0;border: none}
+
+.carousel-inner {height: 100%}
+
+.carousel-inner .item{height:100%}
+
+header.carousel .fill{
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}

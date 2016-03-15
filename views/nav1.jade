@@ -1,0 +1,48 @@
+extends header
+block pageLink
+    link(rel='stylesheet', href='/stylesheets/nav1.css')
+block content
+    include common/navBanner
+
+    header#myCarousel.carousel.slide
+        ol.carousel-indicators
+            li(data-target="#myCarousel" data-slide-to="0" class="active")
+            li(data-target="#myCarousel" data-slide-to="1")
+            li(data-target="#myCarousel" data-slide-to="2")
+                <!-- Wrapper for slides -->
+        .carousel-inner
+            .item.active
+                .fill(style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide One');")
+                    .carousel-caption
+                        h2
+                            |Caption 1
+            .item
+                .fill(style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide Two');")
+                    .carousel-caption
+                        h2
+                            |Caption 2
+            .item
+                .fill(style="background-image:url('http://placehold.it/1900x1080&amp;text=Slide Three');")
+                    .carousel-caption
+                        h2
+                            |Caption 3
+
+                        <!-- Controls -->
+        a.left.carousel-control(href="#myCarousel" data-slide="prev")
+            span.icon-prev
+        a.right.carousel-control(href="#myCarousel" data-slide="next")
+            span.icon-next
+    div tests #{title}
+    if user
+        h3= user.name
+    nav
+        span
+            a(title="主页" href="/") home
+            if user
+                a(title="登出" href="/logout") logout
+            else
+                a(title="登录" href="/login") login
+                a(title="注册" href="/reg") register
+
+    .test
+        | haha

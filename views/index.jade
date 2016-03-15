@@ -1,4 +1,6 @@
 extends header
+block pageLink
+    link(rel='stylesheet', href='/stylesheets/index.css')
 block pageScripts
   script(src="/javascripts/navbarscrollspy.js")
 block content
@@ -6,25 +8,42 @@ block content
     Business HOPE 开放创新平台
   .address-bar
     | 3481 篇文章 | 2456个方案 | 解决245个需求
-  nav.navbar.navbar-default
-    .container
-      .collapse.navbar-collapse
-        ul.nav.navbar-nav
-          li
-            a(href='/nav1') Home
-          li
-            a(href='/login') 技术需求
-          li
-            a(href='/reg') 技术方案
-          li
-            a(href='/reg') 共创空间
-          li
-            a(href='/reg') 技术线索
-          if user
-            li
-              a(href='/logout') Logout
+  include common/navBanner
 
-  div tests #{title}
+  .content-section-a
+      .container
+          .row
+              .col-lg-6.col-sm-7
+                  h2.section-heading
+                    | Death to the Stock Photo:<br/>Special Thanks
+                  p.lead
+                    | A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a>
+                    | for providing the photographs that you see in this template. Visit their website to become a member.
+              .col-sm-5.col-lg-offset-1
+                  img.img-responsive(src='http://blackrockdigital.github.io/startbootstrap-landing-page/img/ipad.png')
+  .content-section-b
+      .container
+        .row
+            .col-sm-5
+                img.img-responsive(src='http://blackrockdigital.github.io/startbootstrap-landing-page/img/dog.png')
+            .col-lg-6.col-sm-7.col-lg-offset-1
+                h2.section-heading
+                    | 3D Device Mockups<br/>by PSDCovers
+                p.lead
+                    | Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by
+                    | PSDCovers! Visit their website to download some of their awesome, free photoshop actions!
+  .content-section-a
+      .container
+        .row
+            .col-lg-6.col-sm-7
+                h2.section-heading
+                    | Google Web Fonts and<br/>Font Awesome Icons
+                p.lead
+                    | This template features the 'Lato' font, part of the Google Web Font library, as well as icons from Font Awesome.
+            .col-sm-5.col-lg-offset-1
+                img.img-responsive(src='http://blackrockdigital.github.io/startbootstrap-landing-page/img/phones.png')
+
+div tests #{title}
   if user
     h3= user.name
   nav

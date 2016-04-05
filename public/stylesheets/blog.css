@@ -1,0 +1,21 @@
+/**
+    index page
+**/
+.blog_main {
+    background: white;
+}
+@media screen and (min-width: 1360px) {
+    .blog_main {
+        width: 1360px;
+        margin: 0 auto;
+    }
+}
+
+/**
+    new page
+**/
+.blog_title {margin: 20px;}
+.blog_content {margin: 20px 20px 0}
+.blog_content textarea {min-height: 300px;}
+.blog_submit .button {width: 10%}
+.blog_submit button:first-child {margin:20px;}

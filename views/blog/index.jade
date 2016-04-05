@@ -1,0 +1,21 @@
+//
+   Created by Lorenzo on 2016/4/1.
+
+extends ../header
+block pageLink
+    link(rel='stylesheet', href='/stylesheets/blog.css')
+block content
+    include ../common/navBanner
+    .blog_main
+        .pull-right
+            a(href='new').btn.button.button_primary.mr10.mt10 创建文章
+        if (blogs.length)
+            for blog in blogs
+                .blog_item
+                    .blog_item_title= blog.title
+                    .blog_item_user
+                        .blog_item_user_avatar
+                            //img(src='http://test.test.com',alt='凉茶')
+                        .blog_item_user_name= blog.userId
+                    .blog_item_content= blog.content
+        .footTest haha

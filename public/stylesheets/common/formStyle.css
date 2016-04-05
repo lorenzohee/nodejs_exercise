@@ -1,0 +1,23 @@
+.button {
+    border: 1px solid #FFFFFF;
+    border-radius: 0;
+    padding: 6px 12px;
+    color: #000000;
+}
+.button:hover{
+    color: #FFFFFF;
+}
+.button_primary {
+    border-color: #2ecc71;
+    background: #2ecc71;
+}
+
+.button_error {
+    background: #9b59b6;
+    border-color: #9b59b6;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 5px 15px;
+}

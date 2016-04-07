@@ -11,5 +11,8 @@ router.get('/', function(req, res){
 router.get('/index', BlogController.index);
 router.get('/new', BlogController.new);
 router.post('/new', BlogController.create);
+router.get('/detail/:id', BlogController.detail);
+router.get('/edit', BlogController.edit);
+router.post('/update', BlogController.update);
 
 module.exports = router;

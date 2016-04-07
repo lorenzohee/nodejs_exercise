@@ -27,6 +27,7 @@ exports.index = function(req, res) {
                 blogs: collections
             }
         };
+        console.log(collections);
         RenderModel.renderModel(req, res, object);
     })
 };
@@ -62,6 +63,37 @@ exports.create = function(req, res) {
     })
 };
 
+exports.edit = function(req, res){
+
+}
+
+exports.update = function(req, res){
+
+}
+
+exports.detail = function(req, res){
+    var blogId = req.params.id;
+    var blog = new Blog({
+        id: blogId
+    });
+    blog.findById(function(err, newBlog){
+        if(err){
+            req.flash('error', '查询失败');
+            return _renderNew(req, res);
+        };
+        req.flash('success', '查询成功');
+
+        var object = {
+            url: 'blog/detail',
+            currentNav: 'solution',
+            data: {
+                title: 'blog',
+                blog: newBlog
+            }
+        };
+        RenderModel.renderModel(req, res, object);
+    })
+}
 var _renderNew = function(req, res){
     res.render('blog/new', {
         title: 'new Blog',

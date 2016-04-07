@@ -4,9 +4,11 @@
 var mongodb = require('./db'),
     markdown = require('markdown').markdown,
     TimeManage = require('../common/timeManage'),
+    ObjectId = require('mongodb').ObjectID,
     User = require('../models/user');
 
 function Blog(blog){
+    this.id = blog.id;
     this.title = blog.title;
     this.userId = blog.userId;
     this.content = blog.content;
@@ -71,6 +73,36 @@ Blog.prototype.create = function(callback) {
                     return callback(err);
                 }
                 callback(null, blog[0]);
+            })
+        })
+    })
+}
+
+Blog.prototype.findById = function(callback){
+    var blog = {
+        id: this.id
+    };
+    mongodb.open(function(err, db){
+        if(err){
+            return callback(err);
+        };
+        db.collection('blog', function(err, collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            };
+            console.log(collection);
+            collection.findOne({_id:ObjectId(blog.id)},function(err, blog){
+                if(err){
+                    mongodb.close();
+                    return callback(err);
+                }
+                if(blog){
+                    blog.created_time = TimeManage.formatTime(blog.created_time);
+                    callback(null, blog);
+                }else {
+                    callback(null, {title:'test',content:'content',created_time:'time',userName: 'name'});
+                }
             })
         })
     })

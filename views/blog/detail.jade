@@ -1,0 +1,20 @@
+//
+   Created by Lorenzo on 2016/4/7.
+//
+   Created by Lorenzo on 2016/4/1.
+
+extends ../header
+block pageLink
+    link(rel='stylesheet', href='/stylesheets/blog.css')
+block content
+    include ../common/navBanner
+    .blog_main
+        .blog_item
+            h3.blog_item_title= collectionObject.blog.title
+            .blog_item_user
+                .blog_item_user_avatar
+                    //img(src='http://test.test.com',alt='凉茶')
+                .blog_item_user_name= collectionObject.blog.userName
+                    |&nbsp;&nbsp;创建于&nbsp;&nbsp;
+                    = collectionObject.blog.created_time
+            .blog_item_content= collectionObject.blog.content

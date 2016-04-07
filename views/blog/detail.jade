@@ -17,4 +17,5 @@ block content
                 .blog_item_user_name= collectionObject.blog.userName
                     |&nbsp;&nbsp;创建于&nbsp;&nbsp;
                     = collectionObject.blog.created_time
-            .blog_item_content= collectionObject.blog.content
+            .blog_item_content
+                !{collectionObject.blog.content}

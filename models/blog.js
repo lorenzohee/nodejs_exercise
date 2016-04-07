@@ -94,8 +94,8 @@ Blog.prototype.findById = function(callback){
             };
             console.log(collection);
             collection.findOne({_id:ObjectId(blog.id)},function(err, blog){
+                mongodb.close();
                 if(err){
-                    mongodb.close();
                     return callback(err);
                 }
                 if(blog){

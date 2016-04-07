@@ -19,5 +19,6 @@ block content
                         .blog_item_user_name= blog.userName
                             |&nbsp;&nbsp;创建于&nbsp;&nbsp;
                             = blog.created_time
-                    .blog_item_content= blog.content
-                        a(href= 'detail/#{blog._id}') 查看更多
+                    .blog_item_content
+                        !{blog.content}
+                        a(href= 'detail/#{blog._id}', class='mr20 pull-right') 查看更多

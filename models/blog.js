@@ -40,6 +40,7 @@ Blog.prototype.index = function(callback){
                     return callback(err);
                 };
                 blogs.forEach(function(blog){
+                    blog.content = markdown.toHTML(blog.content);
                     blog.created_time = TimeManage.formatTime(blog.created_time);
                 });
                 return callback(null, blogs);
@@ -98,6 +99,7 @@ Blog.prototype.findById = function(callback){
                     return callback(err);
                 }
                 if(blog){
+                    blog.content = markdown.toHTML(blog.content);
                     blog.created_time = TimeManage.formatTime(blog.created_time);
                     callback(null, blog);
                 }else {

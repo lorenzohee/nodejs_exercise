@@ -2,12 +2,15 @@
  * Created by Lorenzo on 2016/4/1.
  */
 var mongodb = require('./db'),
-    markdown = require('markdown').markdown;;
+    markdown = require('markdown').markdown,
+    TimeManage = require('../common/timeManage'),
+    User = require('../models/user');
 
 function Blog(blog){
     this.title = blog.title;
     this.userId = blog.userId;
     this.content = blog.content;
+    this.userName = blog.userName;
     this.created_time = blog.created_time
 }
 
@@ -29,14 +32,14 @@ Blog.prototype.index = function(callback){
                 mongodb.close();
                 return callback(err);
             }
-            collection.find().toArray(function(err, blogs){
+            collection.find().sort({created_time:-1}).toArray(function(err, blogs){
                 mongodb.close();
                 if(err) {
                     return callback(err);
                 };
-                //blogs.forEach(function(blog){
-                //    blog.content = markdown.toHtml(blog.content);
-                //});
+                blogs.forEach(function(blog){
+                    blog.created_time = TimeManage.formatTime(blog.created_time);
+                });
                 return callback(null, blogs);
             })
         })
@@ -48,6 +51,7 @@ Blog.prototype.create = function(callback) {
         title: this.title,
         content: this.content,
         userId: this.userId,
+        userName: this.userName,
         created_time: this.created_time
     }
     mongodb.open(function(err, db){

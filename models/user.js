@@ -60,3 +60,26 @@ User.get = function(name, callback) {
         })
     })
 }
+User.findById = function(id, callback) {
+    mongodb.open(function(err, db){
+        if(err) {
+            return callback(err);
+        }
+        db.collection('users', function(err, collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+            collection.findOne({
+                name: 'haha'
+            }, function(err, user){
+                mongodb.close();
+                if(err){
+                    mongodb.close();
+                    return callback(err);
+                }
+                callback(null, user);
+            })
+        })
+    })
+}

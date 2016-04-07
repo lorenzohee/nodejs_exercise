@@ -6,7 +6,6 @@ var crypto = require('crypto'),
     User = require('../models/user');
 
 exports.login = function(req, res){
-    console.log(req.flash('error'));
     _renderLogin(req, res);
 }
 exports.reg = function(req, res){
@@ -73,6 +72,7 @@ var _renderLogin = function(req, res){
     res.render('user/login',
     { title: '登录',
         user: req.session.user,
+        currentNav: 'Home',
         success: req.flash('success').toString(),
         error: req.flash('error').toString() });
 }

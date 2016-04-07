@@ -9,13 +9,14 @@ block content
     .blog_main
         .pull-right
             a(href='new').btn.button.button_primary.mr10.mt10 创建文章
-        if (blogs.length)
-            for blog in blogs
+        if (collectionObject.blogs.length)
+            for blog in collectionObject.blogs
                 .blog_item
-                    .blog_item_title= blog.title
+                    h3.blog_item_title= blog.title
                     .blog_item_user
                         .blog_item_user_avatar
                             //img(src='http://test.test.com',alt='凉茶')
-                        .blog_item_user_name= blog.userId
+                        .blog_item_user_name= blog.userName
+                            |&nbsp;&nbsp;创建于&nbsp;&nbsp;
+                            = blog.created_time
                     .blog_item_content= blog.content
-        .footTest haha

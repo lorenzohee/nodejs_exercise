@@ -2,25 +2,32 @@
  * Created by Lorenzo on 2016/4/1.
  */
 
-var Blog = require('../models/blog')
+var Blog = require('../models/blog'),
+    RenderModel = require('../controllers/renderModel');
 exports.index = function(req, res) {
     var blogs = new Blog({});
     blogs.index(function(err, collections){
         if(err){
             req.flash('error', '');
-            return res.render('blog/index', {
-                title: 'blog',
-                blogs: [],
-                user: req.session.user,
-                success: req.flash('success').toString(),
-                error: req.flash('error').toString() });
+            var object = {
+                url: 'blog/index',
+                currentNav: 'solution',
+                data: {
+                    title: 'blog',
+                    blogs: []
+                }
+            };
+            return RenderModel.renderModel(req, res, object);
         }
-        res.render('blog/index', {
-            title: 'blog',
-            user: req.session.user,
-            blogs: collections,
-            success: req.flash('success').toString(),
-            error: req.flash('error').toString() });
+        var object = {
+            url: 'blog/index',
+            currentNav: 'solution',
+            data: {
+                title: 'blog',
+                blogs: collections
+            }
+        };
+        RenderModel.renderModel(req, res, object);
     })
 };
 
@@ -31,8 +38,9 @@ exports.new = function(req, res) {
 exports.create = function(req, res) {
     var title = req.body.title,
         content = req.body.content,
-        userId = req.session.user.id,
-        created_time = new Date();
+        userId = req.session.user._id,
+        userName = req.session.user.name,
+        created_time = new Date().getTime();
     if(title==''){
         req.flash('error', '请输入标题!');
         return _renderNew(req, res);
@@ -41,6 +49,7 @@ exports.create = function(req, res) {
         title: title,
         content: content,
         userId: userId,
+        userName: userName,
         created_time: created_time
     });
     blog.create(function(err, newBlog){

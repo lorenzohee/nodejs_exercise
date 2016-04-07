@@ -4,16 +4,40 @@ nav.navbar.navbar-default
     .container
         .collapse.navbar-collapse
             ul.nav.navbar-nav
-                li
-                    a(href='/') Home
-                li
-                    a(href='/login') 技术需求
-                li
-                    a(href='/blog') 技术方案
-                li
-                    a(href='/reg') 共创空间
-                li
-                    a(href='/reg') 技术线索
-                if user
+                if currentNav == 'Home'
+                    li.nav-current
+                        a(href='/') Home
+                else
                     li
-                        a(href='/logout') Logout
+                        a(href='/') Home
+                if currentNav == 'require'
+                    li.nav-current
+                        a(href='/login') 技术需求
+                else
+                    li
+                        a(href='/login') 技术需求
+                if currentNav == 'solution'
+                    li.nav-current
+                        a(href='/blog') 技术方案
+                else
+                    li
+                        a(href='/blog') 技术方案
+                if currentNav == 'workspace'
+                    li.nav-current
+                        a(href='/reg') 共创空间
+                else
+                    li
+                        a(href='/reg') 共创空间
+                if currentNav == 'clue'
+                    li.nav-current
+                        a(href='/reg') 技术线索
+                else
+                    li
+                        a(href='/reg') 技术线索
+                if user
+                    if currentNav == 'priInfo'
+                        li.nav-current
+                            a(href='/logout') Logout
+                    else
+                        li
+                            a(href='/logout') Logout

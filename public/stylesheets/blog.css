@@ -11,6 +11,26 @@
     }
 }
 
+.blog_item {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+}
+.blog_item_title {text-align: center}
+.blog_item_content {
+    font-size: 1.1em;
+    line-height: 1.8em;
+    text-indent: 2em;
+    color: #666;
+    margin-top: 15px;
+}
+.blog_item_user_name {
+    font-size: 0.8em;
+    color: #999;
+    text-align: center;
+    margin: 20px 0;
+}
+
 /**
     new page
 **/

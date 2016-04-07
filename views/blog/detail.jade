@@ -17,5 +17,9 @@ block content
                 .blog_item_user_name= collectionObject.blog.userName
                     |&nbsp;&nbsp;创建于&nbsp;&nbsp;
                     = collectionObject.blog.created_time
+                    a(href='/blog/edit/#{collectionObject.blog._id}', title='编辑')
+                        i.fa.ml15.mr5.fa-edit
+                    a(href='', title='删除')
+                        i.ml5.fa.fa-trash-o
             .blog_item_content
                 !{collectionObject.blog.content}

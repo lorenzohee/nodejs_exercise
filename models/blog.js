@@ -92,19 +92,46 @@ Blog.prototype.findById = function(callback){
                 mongodb.close();
                 return callback(err);
             };
-            console.log(collection);
             collection.findOne({_id:ObjectId(blog.id)},function(err, blog){
                 mongodb.close();
                 if(err){
                     return callback(err);
                 }
                 if(blog){
-                    blog.content = markdown.toHTML(blog.content);
                     blog.created_time = TimeManage.formatTime(blog.created_time);
                     callback(null, blog);
                 }else {
                     callback(null, {title:'test',content:'content',created_time:'time',userName: 'name'});
                 }
+            })
+        })
+    })
+}
+
+Blog.prototype.update = function(callback){
+    var blogId = this.id;
+    var blog = {
+        title: this.title,
+        content: this.content,
+        updated_time: (new Date()).getTime()
+    };
+    mongodb.open(function(err, db){
+        if(err){
+            return callback(err);
+        };
+        db.collection('blog', function(err, collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+            collection.update({_id: ObjectId(blogId)}, {
+                $set:{'title':blog.title,'content':blog.content,'updated_time': blog.updated_time}
+            }, function(err){
+                mongodb.close();
+                if(err){
+                    return callback(err);
+                }
+                callback(null);
             })
         })
     })

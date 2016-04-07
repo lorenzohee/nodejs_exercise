@@ -3,6 +3,7 @@
  */
 
 var Blog = require('../models/blog'),
+    markdown = require('markdown').markdown,
     RenderModel = require('../controllers/renderModel');
 exports.index = function(req, res) {
     var blogs = new Blog({});
@@ -27,7 +28,6 @@ exports.index = function(req, res) {
                 blogs: collections
             }
         };
-        console.log(collections);
         RenderModel.renderModel(req, res, object);
     })
 };
@@ -64,17 +64,8 @@ exports.create = function(req, res) {
 };
 
 exports.edit = function(req, res){
-
-}
-
-exports.update = function(req, res){
-
-}
-
-exports.detail = function(req, res){
-    var blogId = req.params.id;
     var blog = new Blog({
-        id: blogId
+        id: req.params.id
     });
     blog.findById(function(err, newBlog){
         if(err){
@@ -83,6 +74,48 @@ exports.detail = function(req, res){
         };
         req.flash('success', '查询成功');
 
+        var object = {
+            url: 'blog/edit',
+            currentNav: 'solution',
+            data: {
+                title: 'blog',
+                blog: newBlog
+            }
+        };
+        RenderModel.renderModel(req, res, object);
+    })
+}
+
+exports.update = function(req, res){
+    var blog = new Blog({
+        id: req.params.id,
+        title: req.body.title,
+        content:req.body.content
+    });
+    blog.update(function(err){
+        if(err){
+            req.flash('error', '更新失败');
+            return res.redirect('/blog/edit/'+blog.id);
+        }
+        req.flash('success', '更新成功');
+        res.redirect('/blog/detail/'+blog.id);
+    })
+}
+
+exports.detail = function(req, res){
+    var blog = new Blog({
+        id: req.params.id
+    });
+    blog.findById(function(err, newBlog){
+        if(err){
+            req.flash('error', '查询失败');
+            return _renderNew(req, res);
+        };
+        req.flash('success', '查询成功');
+
+        if(newBlog){
+            newBlog.content = markdown.toHTML(newBlog.content);
+        };
         var object = {
             url: 'blog/detail',
             currentNav: 'solution',

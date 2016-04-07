@@ -1,0 +1,16 @@
+//
+   Created by Lorenzo on 2016/4/7.
+extends ../header
+block pageLink
+    link(rel='stylesheet', href='/stylesheets/blog.css')
+block content
+    include ../common/navBanner
+    .blog_main
+        form(method='post')
+            .blog_title
+                input(placeholder='请输入标题', name='title', required, value='#{collectionObject.blog.title}').title.mt30
+            .blog_content
+                textarea(placeholder='请输入内容', name='content').content= collectionObject.blog.content
+            .blog_submit
+                button(type='submit').btn.button.button_primary 提交
+                a(href='/blog/index').btn.button.button_error 取消

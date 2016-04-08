@@ -13,4 +13,4 @@ block content
                 textarea(placeholder='请输入内容', name='content').content= collectionObject.blog.content
             .blog_submit
                 button(type='submit').btn.button.button_primary 提交
-                a(href='/blog/index').btn.button.button_error 取消
+                a(href='/blog/detail/#{collectionObject.blog._id}').btn.button.button_error 取消

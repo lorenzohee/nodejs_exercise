@@ -14,5 +14,6 @@ router.post('/new', BlogController.create);
 router.get('/detail/:id', BlogController.detail);
 router.get('/edit/:id', BlogController.edit);
 router.post('/edit/:id', BlogController.update);
+router.get('/delete/:id', BlogController.delete);
 
 module.exports = router;

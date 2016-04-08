@@ -100,6 +100,20 @@ exports.update = function(req, res){
         req.flash('success', '更新成功');
         res.redirect('/blog/detail/'+blog.id);
     })
+};
+
+exports.delete = function(req, res){
+    var blog = new Blog({
+        id: req.params.id
+    });
+    blog.deleteById(function(err){
+        if(err){
+            req.flash('error', '删除失败');
+            return res.redirect('/blog/detail/'+blog.id);
+        }
+        req.flash('success', '成功删除');
+        res.redirect('/blog/index');
+    })
 }
 
 exports.detail = function(req, res){

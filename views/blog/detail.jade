@@ -19,7 +19,7 @@ block content
                     = collectionObject.blog.created_time
                     a(href='/blog/edit/#{collectionObject.blog._id}', title='编辑')
                         i.fa.ml15.mr5.fa-edit
-                    a(href='', title='删除')
+                    a(href='/blog/delete/#{collectionObject.blog._id}', title='删除')
                         i.ml5.fa.fa-trash-o
             .blog_item_content
                 !{collectionObject.blog.content}

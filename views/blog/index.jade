@@ -7,6 +7,7 @@ block pageLink
 block content
     include ../common/navBanner
     .blog_main
+        #top
         .pull-right
             a(href='new').btn.button.button_primary.mr10.mt10 创建文章
         if (collectionObject.blogs.length)
@@ -22,3 +23,6 @@ block content
                     .blog_item_content
                         !{blog.content}
                         a(href= 'detail/#{blog._id}', class='mr20 pull-right') 查看更多
+    a.affix.back-to-top(href='#top')
+        i.fa.fa-angle-double-up.mb5
+        |返回顶部

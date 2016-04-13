@@ -32,6 +32,15 @@
     text-align: center;
     margin: 20px 0;
 }
+.back-to-top {
+    bottom: 7%;
+    right: 5%;
+    padding: 10px 5px;
+    background: #27ae60;
+    writing-mode: vertical-rl;
+    color: #6F4F4F;
+}
+.back-to-top:hover {text-decoration: none; color: #4C4B4B;}
 
 /**
     new page

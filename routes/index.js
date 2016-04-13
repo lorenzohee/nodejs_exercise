@@ -15,6 +15,7 @@ router.get('/newyear', function(req, res, next) {
 router.get('/', function(req, res, next) {
   res.render('index', {
     title: '主页',
+    currentNav: 'Home',
     user: req.session.user,
     success: req.flash('success').toString(),
     error: req.flash('error').toString()

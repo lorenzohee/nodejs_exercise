@@ -25,7 +25,7 @@ exports.logup = function(req, res){
             return _renderLogin(req, res);
         }
         req.session.user = user;
-        req.flash('登录成功');
+        req.flash('欢饮回来，'+user.name);
         return res.redirect('/');
     })
 }
@@ -61,7 +61,8 @@ exports.postReg = function(req, res){
                     req.flash('error', '新增用户失败');
                     return _renderReg(req,res);
                 }
-                req.flash('success', '注册成功');
+                req.session.user = user;
+                req.flash('success', '欢迎您,'+user.name);
                 res.redirect('/');
             })
         }
@@ -69,17 +70,26 @@ exports.postReg = function(req, res){
 }
 
 var _renderLogin = function(req, res){
+    if(req.session.user){
+        req.flash('error', '你已登录，请退出登录后继续操作！');
+        res.redirect('/');
+    };
     res.render('user/login',
     { title: '登录',
         user: req.session.user,
-        currentNav: 'Home',
+        currentNav: 'require',
         success: req.flash('success').toString(),
         error: req.flash('error').toString() });
 }
 
 var _renderReg = function(req, res){
+    if(req.session.user){
+        req.flash('error', '你已登录，请退出登录后继续操作！');
+        res.redirect('/');
+    };
     res.render('user/reg', { title: '注册',
         user: req.session.user,
+        currentNav: 'workspace',
         success: req.flash('success').toString(),
         error: req.flash('error').toString() });
 }

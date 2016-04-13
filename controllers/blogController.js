@@ -11,6 +11,7 @@ exports.index = function(req, res) {
         if(err){
             req.flash('error', '');
             var object = {
+                title: 'blog',
                 url: 'blog/index',
                 currentNav: 'solution',
                 data: {
@@ -21,6 +22,7 @@ exports.index = function(req, res) {
             return RenderModel.renderModel(req, res, object);
         }
         var object = {
+            title: 'blog',
             url: 'blog/index',
             currentNav: 'solution',
             data: {

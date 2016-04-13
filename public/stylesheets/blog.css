@@ -4,7 +4,7 @@
 .blog_main {
     background: white;
 }
-@media screen and (min-width: 1360px) {
+@media screen and (min-width: 1370px) {
     .blog_main {
         width: 1360px;
         margin: 0 auto;
@@ -15,6 +15,8 @@
     display: inline-block;
     width: 100%;
     padding: 10px 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #cccccc;
 }
 .blog_item_title {text-align: center}
 .blog_item_content {

@@ -3,14 +3,16 @@
 extends ../header
 block pageLink
     link(rel='stylesheet', href='/stylesheets/blog.css')
+block pageScripts
+    script(src="/javascripts/blog.js" type='text/javascript')
 block content
     include ../common/navBanner
     .blog_main
         form(method='post')
             .blog_title
-                input(placeholder='请输入标题', name='title', required).title.mt30
+                input(placeholder='请输入标题', name='title', class='input', required).title.mt30
             .blog_content
-                textarea(placeholder='请输入内容', name='content').content
+                textarea(placeholder='请输入内容',class='input', name='content').content
             .blog_submit
                 button(type='submit').btn.button.button_primary 提交
                 a(href='/blog/index').btn.button.button_error 取消

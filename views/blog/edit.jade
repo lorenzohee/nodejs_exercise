@@ -8,9 +8,9 @@ block content
     .blog_main
         form(method='post')
             .blog_title
-                input(placeholder='请输入标题', name='title', required, value='#{collectionObject.blog.title}').title.mt30
+                input(placeholder='请输入标题', name='title',class='input', required, value='#{collectionObject.blog.title}').title.mt30
             .blog_content
-                textarea(placeholder='请输入内容', name='content').content= collectionObject.blog.content
+                textarea(placeholder='请输入内容',class='input', name='content').content= collectionObject.blog.content
             .blog_submit
                 button(type='submit').btn.button.button_primary 提交
                 a(href='/blog/detail/#{collectionObject.blog._id}').btn.button.button_error 取消

@@ -4,6 +4,7 @@
 
 exports.renderModel = function(req, res, object){
     res.render(object.url, {
+        title: object.title,
         collectionObject: object.data,
         currentNav: object.currentNav,
         user: req.session.user,

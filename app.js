@@ -39,8 +39,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next){
   res.locals.user = req.user; // make user available in all views
-  res.locals.errorMessages = req.flash('error'); // make error alert messages available in all views
-  res.locals.successMessages = req.flash('success'); // make success messages available in all views
+  //res.locals.errorMessages = req.flash('error'); // make error alert messages available in all views
+  //res.locals.successMessages = req.flash('success'); // make success messages available in all views
   next();
 })
 
